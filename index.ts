@@ -17,8 +17,9 @@ const CUSTOM_MESSAGE_OPTION = "[write own message]...";
 const spinner = ora();
 
 let diff = "";
+let bare = "--git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
 try {
-  diff = execSync("git diff --cached").toString();
+  diff = execSync("git $bare diff --cached").toString();
   if (!diff) {
     console.log("No changes to commit.");
     process.exit(0);
@@ -68,7 +69,7 @@ async function run(diff: string) {
         execSync("git commit", { stdio: "inherit" });
         return;
       } else {
-        execSync(`git commit -m '${escapeCommitMessage(answer.message)}'`, {
+        execSync(`git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME commit -m '${escapeCommitMessage(answer.message)}'`, {
           stdio: "inherit",
         });
         return;
