@@ -19,7 +19,7 @@ const spinner = ora();
 let diff = "";
 let bare = "--git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
 try {
-  diff = execSync("git $bare diff --cached").toString();
+  diff = execSync("git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME diff --cached").toString();
   if (!diff) {
     console.log("No changes to commit.");
     process.exit(0);
@@ -66,7 +66,7 @@ async function run(diff: string) {
       });
 
       if (answer.message === CUSTOM_MESSAGE_OPTION) {
-        execSync("git commit", { stdio: "inherit" });
+        execSync("git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME commit", { stdio: "inherit" });
         return;
       } else {
         execSync(`git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME commit -m '${escapeCommitMessage(answer.message)}'`, {
