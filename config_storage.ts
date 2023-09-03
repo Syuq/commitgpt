@@ -1,5 +1,5 @@
+import { existsSync, readFileSync, writeFileSync } from "fs";
 import { homedir } from "os";
-import { readFileSync, writeFileSync, existsSync } from "fs";
 import { defaultPromptTemplate } from "./template.js";
 
 const GLOBAL_CONFIG_PATH = `${homedir()}/.commitgpt.json`;
