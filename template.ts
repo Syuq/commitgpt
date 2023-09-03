@@ -8,6 +8,6 @@ export const defaultPromptTemplate = [
 
   "",
   "examples:",
-  " - fix(authentication): add password regex pattern",
-  " - feat(storage): add new test cases",
+  " -🐛 fix(authentication): add password regex pattern",
+  " -🚀 feat(storage): add new test cases",
 ].join("\n");
